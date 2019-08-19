@@ -12,7 +12,7 @@ constructor(props){
   super(props)
   this.state = {
     isLoading:false,
-    genres: []
+    genres: {}
    
   }
  }
