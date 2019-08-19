@@ -12,6 +12,7 @@ constructor(props){
   super(props)
   this.state = {
     isLoading:false,
+    genres: []
    
   }
  }
@@ -23,9 +24,21 @@ constructor(props){
    .then((res)=>console.log(res.data))
    apis.loadGenres()
    .then((res)=>console.log(res.data))
+
+   apis.loadGenres()
+   .then((res)=>this.setState({
+     isLoading:false,
+     genres: res.data
+   }))
+
    
   }
- 
+  renderGenreLink(genre){
+    return(
+      <a href="">{genre}</a>
+    )
+
+  }
   render(){
   return (
     <div>
@@ -54,7 +67,7 @@ constructor(props){
       <div className="row">
         <div className="col-lg-12">
           <h1><img src="images/logo.png"  alt=""/></h1>
-          <p>{this.state.serieById}Nunca mais esqueça uma série que você assistiu ou que alguém lhe indicou.</p>
+          <p>Nunca mais esqueça uma série que você assistiu ou que alguém lhe indicou.</p>
         </div>
       </div>
     </div>
@@ -62,7 +75,7 @@ constructor(props){
   <section>
     {this.state.isLoading && <span>aguarde, carregando.....</span>}
     {!this.state.isLoading && <div>
-      Ver séries do genêro:{JSON.stringify(this.state.genres)}
+      Ver séries do genêro:{this.state.genres.map(this.renderGenreLink)}
     </div>}
     
   </section>
