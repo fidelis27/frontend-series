@@ -23,9 +23,7 @@ constructor(props){
    apis.loadSeries()
    .then((res)=>console.log(res.data))
    apis.loadGenres()
-   .then((res)=>console.log(res.data))
-
-   apis.loadGenres()
+   .then((res)=>console.log(res.data))     
    .then((res)=>this.setState({
      isLoading:false,
      genres: res.data
