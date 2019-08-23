@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 
 /* function App(){
@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom'
 import Home from './templates/components/Home'
 import NewSeries from './templates/components/NewSeries'
+import Series from './templates/components/Series'
 
  //function stateless component
 const About = ()   => <section className="intro-section"> <h1>Sobre</h1></section>
@@ -46,8 +47,9 @@ class App extends Component {
           </div>
         </nav>
         <Route exact path='/' component ={Home}/>
-        <Route exact path='/about' component ={About}/>
-        <Route exact path='/new' component ={NewSeries}/>
+        <Route path='/series/:genre' component ={Series}/>
+        <Route path='/about' component ={About}/>
+        <Route path='/new' component ={NewSeries}/>
        
       </div>
        

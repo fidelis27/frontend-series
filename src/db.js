@@ -6,7 +6,11 @@ import axios from 'axios'
 
 const apis ={
     loadGenres:()=> api.get('genre'),
-    loadSeries:()=> api.get('serie')
+    StoreSeries:(serie)=> api.post('serie',serie),
+    UpdateStors:(serie)=>api.put('serie',serie),
+    loadSeries:()=> api.get('serie'),
+    loadSeriesByGenre:(genre)=> api.get('serie?genre'+genre)
+    
 }
 
 export default apis  

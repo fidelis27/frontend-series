@@ -1,0 +1,21 @@
+aside.link {
+    padding: 5;
+    background-color:gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    color: black;
+       
+    
+
+
+}
+aside span.link {
+    padding: 5;
+    color: black;
+    
+    align-items: center;
+    justify-content: center;
+ }
