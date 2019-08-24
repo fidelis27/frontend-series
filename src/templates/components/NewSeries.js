@@ -1,6 +1,7 @@
 import React, {Component } from 'react'
 import apis from '../../db'
 import './NewSeries.css'
+import {Redirect} from 'react-router-dom'
 
 const statuses= {
     'watched': 'Assistido',
@@ -37,7 +38,8 @@ class NewSeries extends Component{
           .then((res) => {
             this.setState({
               isLoading: false,
-              genres: res.data
+              genres: res.data,
+              redirect:false
     
             })
           })
@@ -57,6 +59,11 @@ class NewSeries extends Component{
 
             }else{ */
                  apis.StoreSeries(newSeries)
+                 .then((res)=>{
+                     this.setState({
+                         redirect:'/series/'+this.refs.genre.value
+                     })
+                 })
                 
                 /*  } 
            })  */
@@ -64,7 +71,11 @@ class NewSeries extends Component{
       }
     render(){
     return (
+       
     <section className="intro-section"> 
+     {this.state.redirect &&
+        <Redirect to={this.state.redirect}/>
+     }
       <h1>Nova série</h1>
        <form key="form" >
         Nome: <input type="text" ref="name" className="form-control"/><br/>

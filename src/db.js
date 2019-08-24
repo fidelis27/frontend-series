@@ -7,9 +7,10 @@ import axios from 'axios'
 const apis ={
     loadGenres:()=> api.get('genre'),
     StoreSeries:(serie)=> api.post('serie',serie),
-    UpdateStors:(serie)=>api.put('serie',serie),
+    UpdateStories:(serie)=>api.put('serie',serie),
     loadSeries:()=> api.get('serie'),
-    loadSeriesByGenre:(genre)=> api.get('serie?genre'+genre)
+    loadSeriesByGenre:(genre)=> api.get('serie/'+genre)
+    
     
 }
 

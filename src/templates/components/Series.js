@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
 import apis from '../../db'
+const statuses= {
+    'watched': 'Assistido',
+    'watching': 'Assistindo',
+    'toWatch': 'Assitir'
+}
 
 class Series extends Component {
     constructor(props){
@@ -13,11 +18,14 @@ class Series extends Component {
     componentDidMount(){
         this.setState({isLoading:true})
        apis.loadSeriesByGenre(this.props.match.params.genre)
+       .then((res)=> console.log(res.data))
+       apis.loadSeriesByGenre(this.props.match.params.genre)
        .then((res)=>{
            this.setState({
                isLoading:false,
                series:res.data
            })
+           
           
        })
     }
@@ -32,7 +40,7 @@ class Series extends Component {
                   <div className="row">
                     <div className="col-xs-12 col-md-6">
                       <p className="lead">
-                       {series.genre}</p>
+                       {series.genre}/{statuses[series.status]}</p>
                     </div>
                     <div className="col-xs-12 col-md-6">
                       <a className="btn btn-success" href="">Gerenciar</a>
